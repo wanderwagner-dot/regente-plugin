@@ -1,0 +1,40 @@
+# Plugin Regente: validação da estrutura, checagem da casca e varredura de segredos.
+name: validar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar o Claude Code (só para o validador oficial)
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validar marketplace e plugin (modo estrito)
+        run: |
+          claude plugin validate . --strict
+          claude plugin validate ./plugins/regente --strict
+      - name: Checar a casca (fina, sem bin/, versão consistente)
+        run: node .github/scripts/verificar-casca.mjs
+
+  segredos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

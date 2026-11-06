@@ -1,0 +1,13 @@
+{
+  "name": "regente",
+  "description": "Marketplace do Regente: equipe de IA para pequenas empresas. Só a casca do plugin; o método é entregue pelo servidor com licença.",
+  "owner": { "name": "Regente" },
+  "plugins": [
+    {
+      "name": "regente",
+      "source": "./plugins/regente",
+      "description": "Regente (versão de teste): confere a licença, recebe as instruções do servidor e mostra a Fila de Aprovação.",
+      "category": "produtividade"
+    }
+  ]
+}

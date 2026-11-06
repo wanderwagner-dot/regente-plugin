@@ -1,0 +1,9 @@
+{
+  "name": "regente",
+  "displayName": "Regente",
+  "version": "0.0.1",
+  "description": "Regente (versão de teste): confere a licença, recebe as instruções oficiais do servidor e mostra a Fila de Aprovação. Nada sai sem a aprovação do dono.",
+  "author": { "name": "Regente" },
+  "license": "UNLICENSED",
+  "keywords": ["regente", "fila-de-aprovacao", "pequenas-empresas"]
+}
