@@ -2,7 +2,7 @@
   "mcpServers": {
     "regente": {
       "type": "http",
-      "url": "https://regente-teste.subdominio.workers.dev/mcp"
+      "url": "https://regente-teste.wanderwagner.workers.dev/mcp"
     }
   }
 }
